@@ -17,7 +17,7 @@ class FIFOCache(BaseCaching):
         self.cache_data = OrderedDict()
 
     def put(self, key, item):
-        '''assign to the dictionary `self.cache_data`
+        '''assign to the dictionary self
         '''
 
         if key is None or item is None:
