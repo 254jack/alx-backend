@@ -1,20 +1,17 @@
 #!/usr/bin/env python3
-'''Task 3: LRU Caching
-'''
-
-
+"""Task 4: MRU Caching.
+"""
 from collections import OrderedDict
+
 from base_caching import BaseCaching
 
 
-class LRUCache(BaseCaching):
-    '''A class `LRUCache` that inherits from
-       `BaseCaching` and is a caching system
-    '''
-
+class MRUCache(BaseCaching):
+    """A class `MRUCache`
+    """
     def __init__(self):
-        '''initialize the cache
-        '''
+        """Initializes the cache.
+        """
         super().__init__()
         self.cache_data = OrderedDict()
 
@@ -25,8 +22,8 @@ class LRUCache(BaseCaching):
             return
         if key not in self.cache_data:
             if len(self.cache_data) + 1 > BaseCaching.MAX_ITEMS:
-                lru_key, _ = self.cache_data.popitem(True)
-                print("DISCARD:", lru_key)
+                mru_key, _ = self.cache_data.popitem(False)
+                print("DISCARD:", mru_key)
             self.cache_data[key] = item
             self.cache_data.move_to_end(key, last=False)
         else:
